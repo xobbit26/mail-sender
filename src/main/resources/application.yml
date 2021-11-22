@@ -1,2 +1,15 @@
 server:
   port: 8099
+
+spring:
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://0.0.0.0:5432/mail_sender_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
