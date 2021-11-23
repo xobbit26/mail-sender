@@ -13,4 +13,5 @@ public enum TestEnum {
     public int getValue() {
         return value;
     }
+
 }
