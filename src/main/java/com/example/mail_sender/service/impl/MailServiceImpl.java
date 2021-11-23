@@ -37,6 +37,30 @@ public class MailServiceImpl implements MailService {
                         mailDto.getRecipient())
                 .iterator().next();
 
-        System.out.println(id);
+        System.out.println("CREATED ID: " + id);
+    }
+
+    @Override
+    public void update(MailDto mailDto) {
+        String query = "UPDATE mail SET title = ?, text = ?, sender = ?, recipient= ?" +
+                "WHERE id = ?;";
+        long id = queryService.executeParametrizedUpdate(query,
+                        mailDto.getTitle(),
+                        mailDto.getText(),
+                        mailDto.getSender(),
+                        mailDto.getRecipient(),
+                        mailDto.getId())
+                .iterator().next();
+
+        System.out.println("Updated ID: " + id);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        String query = "DELETE FROM mail WHERE id=?";
+        long deletedId = queryService.executeParametrizedUpdate(query, id)
+                .iterator().next();
+
+        System.out.println("deleted ID: " + id);
     }
 }

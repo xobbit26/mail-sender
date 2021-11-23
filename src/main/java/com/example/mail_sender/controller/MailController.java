@@ -2,10 +2,7 @@ package com.example.mail_sender.controller;
 
 import com.example.mail_sender.dto.MailDto;
 import com.example.mail_sender.service.MailService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -22,5 +19,15 @@ public class MailController {
     @PostMapping("create")
     public void create(@RequestBody MailDto mail) {
         mailService.create(mail);
+    }
+
+    @PutMapping("update")
+    public void update(@RequestBody MailDto mail){
+        mailService.update(mail);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public void delete(@PathVariable Integer id){
+        mailService.delete(id);
     }
 }
