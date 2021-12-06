@@ -3,15 +3,9 @@ package com.example.mail_sender.service.impl;
 import com.example.mail_sender.service.QueryService;
 import lombok.SneakyThrows;
 import org.hibernate.Session;
-import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
-import org.hibernate.engine.spi.SessionFactoryImplementor;
-import org.hibernate.internal.SessionImpl;
-import org.hibernate.jdbc.Work;
-import org.postgresql.jdbc.PgConnection;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import java.sql.*;
 import java.util.*;
@@ -52,29 +46,6 @@ public class QueryServiceImpl implements QueryService {
         });
 
         return list;
-
-
-//        Connection con = entityManager.unwrap(Connection.class);
-//        try (PreparedStatement stmt = con.prepareStatement(sql);) {
-//            AtomicInteger i = new AtomicInteger(1);
-//            Arrays.stream(params).forEach(o -> setValue(stmt, i.getAndIncrement(), o));
-//            stmt.executeUpdate();
-//            if (stmt.getGeneratedKeys() != null) {
-//                try (ResultSet keys = stmt.getGeneratedKeys()) {
-//                    List<Integer> list = new ArrayList<>();
-//                    while (keys.next()) {
-//                        list.add(keys.getInt(1));
-//                    }
-//                    return list;
-//                }
-//            }
-//            return Collections.emptyList();
-//        } catch (Exception e) {
-//            throw new RuntimeException("Update cannot be processed", e);
-//        }
-//        finally {
-//            con.close();
-//        }
     }
 
     private void setValue(PreparedStatement stmt, int index, Object o) {
@@ -102,6 +73,5 @@ public class QueryServiceImpl implements QueryService {
         } catch (SQLException e) {
             throw new RuntimeException("Wrong parameter type!", e);
         }
-
     }
 }
