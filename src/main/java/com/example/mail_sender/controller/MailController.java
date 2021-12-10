@@ -22,12 +22,12 @@ public class MailController {
     }
 
     @PutMapping("update")
-    public void update(@RequestBody MailDto mail){
+    public void update(@RequestBody MailDto mail) {
         mailService.update(mail);
     }
 
     @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable Integer id){
+    public void delete(@PathVariable Long id) {
         mailService.delete(id);
     }
 }
