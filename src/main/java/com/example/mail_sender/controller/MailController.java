@@ -21,10 +21,6 @@ public class MailController {
         mailService.create(mail);
     }
 
-    @PutMapping("update")
-    public void update(@RequestBody MailDto mail) {
-        mailService.update(mail);
-    }
 
     @DeleteMapping("delete/{id}")
     public void delete(@PathVariable Long id) {
