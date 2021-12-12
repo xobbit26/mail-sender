@@ -4,6 +4,7 @@ import com.example.mail_sender.dto.MailDto;
 import com.example.mail_sender.entity.Mail;
 import com.example.mail_sender.repository.MailRepository;
 import com.example.mail_sender.service.MailService;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,6 +25,7 @@ public class MailServiceImpl implements MailService {
     public void delete(Long id) {
         mailRepository.deleteById(id);
     }
+
 
     private Mail mapMailDtoToEntity(MailDto mailDto) {
         return new Mail(

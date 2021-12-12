@@ -16,13 +16,12 @@ public class MailController {
     }
 
 
-    @PostMapping("create")
+    @PostMapping
     public void create(@RequestBody MailDto mail) {
         mailService.create(mail);
     }
 
-
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         mailService.delete(id);
     }
