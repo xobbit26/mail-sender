@@ -1,21 +1,47 @@
 version: '3.8'
 services:
-  db:
+
+  mail_sender:
+    container_name: mail_sender
+    build: .
+#    image: mail-sender-app
+    restart: always
+    depends_on:
+      - mail_sender_db
+    networks:
+      - mail_sender_network
+    ports:
+      - "8099:8099"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://mail_sender_db:5432/mail_sender_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_MAIN_BANNER-MODE: off
+
+
+  mail_sender_db:
     container_name: pg_container
     image: postgres
     restart: always
+    networks:
+      - mail_sender_network
     volumes:
       - mail_sender_db_volume:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
-#      POSTGRES_DB: test_db
     ports:
       - "5432:5432"
+
+
   pgadmin:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
     restart: always
+    depends_on:
+      - mail_sender_db
+    networks:
+      - mail_sender_network
     volumes:
       - pg_admin_volume:/var/lib/pgadmin
     environment:
@@ -24,6 +50,10 @@ services:
     ports:
       - "5050:80"
 
+
 volumes:
   mail_sender_db_volume:
   pg_admin_volume:
+
+networks:
+  mail_sender_network:
