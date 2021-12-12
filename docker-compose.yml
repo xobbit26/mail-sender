@@ -16,6 +16,8 @@ services:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
     restart: always
+    volumes:
+      - pg_admin_volume:/var/lib/pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
@@ -24,3 +26,4 @@ services:
 
 volumes:
   mail_sender_db_volume:
+  pg_admin_volume:
