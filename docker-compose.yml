@@ -4,6 +4,8 @@ services:
     container_name: pg_container
     image: postgres
     restart: always
+    volumes:
+      - mail_sender_db_volume:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
@@ -19,3 +21,6 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
+
+volumes:
+  mail_sender_db_volume:

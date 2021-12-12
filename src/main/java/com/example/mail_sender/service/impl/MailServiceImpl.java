@@ -27,11 +27,11 @@ public class MailServiceImpl implements MailService {
 
     private Mail mapMailDtoToEntity(MailDto mailDto) {
         return new Mail(
-                mailDto.getId(),
-                mailDto.getTitle(),
-                mailDto.getText(),
-                mailDto.getSender(),
-                mailDto.getRecipient()
+                mailDto.id(),
+                mailDto.title(),
+                mailDto.text(),
+                mailDto.sender(),
+                mailDto.recipient()
         );
     }
 }

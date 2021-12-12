@@ -35,11 +35,11 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.flywaydb</groupId>-->
-<!--            <artifactId>flyway-maven-plugin</artifactId>-->
-<!--            <version>8.0.5</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>8.1.0</version>
+        </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -48,11 +48,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -84,20 +79,6 @@
                     <target>16</target>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.flywaydb</groupId>-->
-<!--                <artifactId>flyway-maven-plugin</artifactId>-->
-<!--                <version>8.0.5</version>-->
-<!--                <configuration>-->
-<!--                    <user>postgres</user>-->
-<!--                    <password>postgres</password>-->
-<!--                    <schemas>-->
-<!--                        <schema>-->
-<!--                            public-->
-<!--                        </schema>-->
-<!--                    </schemas>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
         </plugins>
     </build>
 
