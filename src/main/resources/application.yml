@@ -19,3 +19,19 @@ spring:
     username: root
     password: root
     driver-class-name: org.postgresql.Driver
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: xobbit26@gmail.com
+    password: mylemrkhnphhtksg
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+application:
+  check-emails-period-millis: 10000  #10 seconds
+  max-attempts-to-send-email: 100

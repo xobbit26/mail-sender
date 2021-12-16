@@ -13,14 +13,22 @@ services:
     ports:
       - "8099:8099"
     environment:
+      SPRING_MAIN_BANNER-MODE: off
       SPRING_DATASOURCE_URL: jdbc:postgresql://mail_sender_db:5432/mail_sender_db
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      SPRING_MAIN_BANNER-MODE: off
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: xobbit26@gmail.com
+      SPRING_MAIL_PASSWORD: mylemrkhnphhtksg
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: true
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS: true
+      APPLICATION_CHECK_EMAILS_PERIOD_MILLIS: 10000  #10 seconds
+      APPLICATION_MAX_ATTEMPTS_TO_SEND_EMAIL: 10
 
 
   mail_sender_db:
-    container_name: pg_container
+    container_name: mail_sender_db
     image: postgres
     restart: always
     networks:
@@ -30,12 +38,14 @@ services:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
+      POSTGRES_DB: mail_sender_db
     ports:
       - "5432:5432"
 
 
+  #optional
   pgadmin:
-    container_name: pgadmin4_container
+    container_name: pgadmin
     image: dpage/pgadmin4
     restart: always
     depends_on:
